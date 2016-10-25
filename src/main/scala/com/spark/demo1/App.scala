@@ -23,7 +23,7 @@ object SparkLogProcess {
     
     // 1st Part, load data
     // read all the log files into RDD
-    val path_log = folder_log + "/*.gz"
+    val path_log = folder_log + "*.gz"
     val FElogAllKinds_rdd = sc.textFile(path_log)
     val FElog_necessary_rdd = FElogAllKinds_rdd.filter(x => (x.contains("<name>OTA_HotelAvailRS</name>")&&x.contains("id=\"OTA2011B_APD\"")&&x.contains("EchoToken=\"MultiSingle\""))||(x.contains("<name>OTA_HotelAvailRQ</name>")&&x.contains("id=\"OTA2011B_APD\"")&&x.contains("EchoToken=\"MultiSingle\""))||(x.contains("HBTLCR")) )
     //availability request
